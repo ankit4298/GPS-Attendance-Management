@@ -9,9 +9,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Welcome</title>
+        <style>
+            p{
+                color: red;
+                font-weight: bold;
+                text-align: center;
+                font-size: 64px;
+            }
+        </style>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <p>Work in Progress</p>
     </body>
 </html>

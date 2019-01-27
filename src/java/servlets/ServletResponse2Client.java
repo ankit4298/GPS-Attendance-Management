@@ -33,13 +33,13 @@ public class ServletResponse2Client extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            
-            String uname=request.getParameter("uname");
-            CreateJSON cj=new CreateJSON();
-            String jsonText=cj.createJSONresponse(uname);
-    
+
+            String uname = request.getParameter("uname");
+            CreateJSON cj = new CreateJSON();
+            String jsonText = cj.createJSONresponse(uname);
+
             out.println(jsonText);
-            
+
         }
     }
 

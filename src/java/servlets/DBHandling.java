@@ -46,10 +46,11 @@ public class DBHandling extends HttpServlet {
 
             con = DBConnection.getDBConnection();
 
-            String sql = "insert into logincredentials values(?,?)";
+            String sql = "insert into logincredentials values(?,?,?)";
             ps = con.prepareStatement(sql);
             ps.setString(1, "ewewq");
             ps.setString(2, "dhasd");
+            ps.setInt(3, 0);
             int res = ps.executeUpdate();
 
             //send 2nd parameter as a serializable object which will send data to jsp page

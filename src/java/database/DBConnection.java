@@ -25,11 +25,11 @@ public class DBConnection {
     static Connection con = null;
 
     public static Connection getDBConnection() {
-
+        
         try {
             String dbhost, dbname, dbuser, dbpass;
             dbhost = "localhost:3306";
-            dbname = "testserver";
+            dbname = "all_info";
             dbuser = "user";
             dbpass = "password";
 

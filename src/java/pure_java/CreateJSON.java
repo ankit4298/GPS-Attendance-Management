@@ -72,4 +72,19 @@ public class CreateJSON {
         
         return jsonText;
     }
+    
+    public String loginResponse(int verify,int loginstatus) throws IOException{
+        String jsonText;
+        
+        JSONObject jo=new JSONObject();
+        jo.put("loginverified", verify);
+        jo.put("loginstatus", loginstatus);
+        
+        StringWriter out=new StringWriter();
+        jo.writeJSONString(out);
+        
+        jsonText=out.toString();
+        
+        return jsonText;
+    }
 }

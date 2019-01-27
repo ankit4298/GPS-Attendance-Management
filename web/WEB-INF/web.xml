@@ -8,6 +8,14 @@
         <servlet-name>DBHandling</servlet-name>
         <servlet-class>servlets.DBHandling</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginRecordsLookup</servlet-name>
+        <servlet-class>servlets.LoginRecordsLookup</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ValidateLogin</servlet-name>
+        <servlet-class>servlets.ValidateLogin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletResponse2Client</servlet-name>
         <url-pattern>/ServletResponse2Client</url-pattern>
@@ -16,9 +24,20 @@
         <servlet-name>DBHandling</servlet-name>
         <url-pattern>/DBHandling</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginRecordsLookup</servlet-name>
+        <url-pattern>/LoginRecordsLookup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ValidateLogin</servlet-name>
+        <url-pattern>/ValidateLogin</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <!--    <welcome-file-list>
+        <welcome-file>employeeMap.jsp</welcome-file>
+    </welcome-file-list>-->
 </web-app>
