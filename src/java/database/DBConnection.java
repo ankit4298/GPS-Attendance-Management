@@ -28,7 +28,7 @@ public class DBConnection {
         
         try {
             String dbhost, dbname, dbuser, dbpass;
-            dbhost = "localhost:3306";
+            dbhost = "jws-app-mysql:3306";
             dbname = "all_info";
             dbuser = "user";
             dbpass = "password";
