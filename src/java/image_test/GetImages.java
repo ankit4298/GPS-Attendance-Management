@@ -59,6 +59,8 @@ public class GetImages extends HttpServlet {
                 encodedImage = rs.getString("image");
             }
             
+//            out.println("<img src=\"data:image/png;base64,"+encodedImage+"\" alt=\"pfp\" />");
+            
             CreateJSON cj=new CreateJSON();
             String jsonText=cj.imageResponse(eid, encodedImage);
             out.print(jsonText);
