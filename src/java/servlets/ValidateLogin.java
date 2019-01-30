@@ -49,11 +49,11 @@ public class ValidateLogin extends HttpServlet {
             String jsonResponse = "";
 
             if (validate == 1) {
-                jsonResponse = cj.loginResponse(1, 0);  //login success
+                jsonResponse = cj.loginResponse(username,1, 0);  //login success
             } else if (validate == -1) {
-                jsonResponse = cj.loginResponse(1, 1);  //login fails at client w/ double login msg
+                jsonResponse = cj.loginResponse(username,1, 1);  //login fails at client w/ double login msg
             } else {
-                jsonResponse = cj.loginResponse(0, 0);  //login fails at client
+                jsonResponse = cj.loginResponse(username,0, 0);  //login fails at client
             }
 
             out.print(jsonResponse);
