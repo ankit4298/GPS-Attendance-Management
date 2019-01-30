@@ -20,6 +20,15 @@
         </style>
     </head>
     <body>
-        <p>Work in Progress</p>
+        <br/>
+        <p>Attendance Management System</p>
+        <br/>
+        <hr/>
+        <br/>
+        <br/>
+        <a href="employeeMap.jsp">Employee Map</a><br/>
+        <a href="LoginRecordsLookup">Display all login credentials</a>
+        
+        
     </body>
 </html>

@@ -16,6 +16,10 @@
         <servlet-name>ValidateLogin</servlet-name>
         <servlet-class>servlets.ValidateLogin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GetImages</servlet-name>
+        <servlet-class>image_test.GetImages</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletResponse2Client</servlet-name>
         <url-pattern>/ServletResponse2Client</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>ValidateLogin</servlet-name>
         <url-pattern>/ValidateLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetImages</servlet-name>
+        <url-pattern>/GetImages</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

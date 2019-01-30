@@ -88,4 +88,19 @@ public class CreateJSON {
         
         return jsonText;
     }
+    
+    public String imageResponse(String eid,String endcodedImage) throws IOException{
+        String jsonText;
+        
+        JSONObject jo=new JSONObject();
+        jo.put("eid",eid);
+        jo.put("encoded image", endcodedImage);
+        
+        StringWriter out=new StringWriter();
+        jo.writeJSONString(out);
+        
+        jsonText=out.toString();
+        
+        return jsonText;
+    }
 }

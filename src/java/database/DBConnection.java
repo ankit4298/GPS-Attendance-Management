@@ -5,16 +5,9 @@
  */
 package database;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -28,7 +21,8 @@ public class DBConnection {
         
         try {
             String dbhost, dbname, dbuser, dbpass;
-            dbhost = "jws-app-mysql:3306";
+//            dbhost = "jws-app-mysql:3306";
+            dbhost = "localhost:3306";
             dbname = "all_info";
             dbuser = "user";
             dbpass = "password";
@@ -37,7 +31,6 @@ public class DBConnection {
 
             String dbURL = "jdbc:mysql://" + dbhost + "/" + dbname;
 
-            //user is DBConnectionClass name
             con = DriverManager.getConnection(dbURL, dbuser, dbpass);
 
         } catch (ClassNotFoundException | SQLException ex) {

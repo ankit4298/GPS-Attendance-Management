@@ -128,7 +128,7 @@ public class ValidateLogin extends HttpServlet {
             } else {
                 return 0;
             }
-
+            
         } catch (SQLException ex) {
             Logger.getLogger(ValidateLogin.class.getName()).log(Level.SEVERE, null, ex);
             return 0;
