@@ -61,9 +61,11 @@ function checkInPolygon(marker, polygon, empid) {
     var infowindow = new google.maps.InfoWindow();
     var html = "";
     if (google.maps.geometry.poly.containsLocation(marker.getPosition(), polygon)) {
-        result.innerHTML="inside";
+        result.value="inside";
+        window.location="LocationResponse?result=1"
     } else {
-        result.innerHTML="outside";
+        result.value="outside";
+        window.location="LocationResponse?result=0";
     }
     infowindow.setContent(html);
     infowindow.open(map, marker);

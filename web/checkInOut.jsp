@@ -26,9 +26,8 @@
         <input type="hidden" id="latitude" value=<%= latitude %> />
         <input type="hidden" id="longitude" value=<%= longitude %> />
         <div id="map"></div>
-        <!--<input type="hidden" id="result" value="" />-->
+        <input type="hidden" id="result" name="result" value="" />
         
-        <%out.print("<div id=\"result\"></div>");%>
         <script type="text/javascript" src="js/checkInOut.js"></script>
         
     </body>
