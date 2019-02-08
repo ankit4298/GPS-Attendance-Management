@@ -34,7 +34,7 @@ public class DBConnection {
             con = DriverManager.getConnection(dbURL, dbuser, dbpass);
 
         } catch (ClassNotFoundException | SQLException ex) {
-            System.out.println("Driver not found");
+            System.out.println("change connection to localhost for local system\nDriver not found");
         }
 
         return con;
