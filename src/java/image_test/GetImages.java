@@ -39,32 +39,33 @@ public class GetImages extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        Connection con = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-
         try (PrintWriter out = response.getWriter()) {
 
-            String eid=request.getParameter("eid");
-            
+            Connection con = null;
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+
+            String eid = request.getParameter("eid");
+
             con = DBConnection.getDBConnection();
             String sql = "select * from img_test where eid=?";
             ps = con.prepareStatement(sql);
             ps.setString(1, eid);
             rs = ps.executeQuery();
 
-            String encodedImage="";
-            
+            String encodedImage = null;
+
             while (rs.next()) {
                 encodedImage = rs.getString("image");
+                System.out.println("here");
             }
             
 //            out.println("<img src=\"data:image/png;base64,"+encodedImage+"\" alt=\"pfp\" />");
-            
-            CreateJSON cj=new CreateJSON();
-            String jsonText=cj.imageResponse(eid, encodedImage);
+
+            CreateJSON cj = new CreateJSON();
+            String jsonText = cj.imageResponse(eid, encodedImage);
             out.print(jsonText);
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(GetImages.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -96,7 +97,7 @@ public class GetImages extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        doGet(request, response);
     }
 
     /**

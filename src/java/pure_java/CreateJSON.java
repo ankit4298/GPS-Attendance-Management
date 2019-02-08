@@ -17,9 +17,9 @@ import org.json.simple.JSONObject;
  */
 public class CreateJSON {
     
-    double lat[] = {20.013601,  20.014282, 20.014316, 20.013951};
-    double lng[] = {73.764862, 73.762663, 73.764120, 73.763843};
-    String eid[] = {"e100", "e101", "e102", "e103"};
+    double lat[] = {20.013601,  20.014282, 20.014316, 20.013951, 20.01434923};
+    double lng[] = {73.764862, 73.762663, 73.764120, 73.763843, 73.76441761};
+    String eid[] = {"e100", "e101", "e102", "e103", "e104"};
     
     
     // Pass DATABASE lat,lng,eid to instance variables
