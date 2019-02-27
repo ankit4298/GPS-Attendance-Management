@@ -5,8 +5,10 @@
  */
 package pure_java;
 
+import database.FetchEmployeeLocations;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import org.json.simple.JSONArray;
@@ -17,18 +19,34 @@ import org.json.simple.JSONObject;
  */
 public class CreateJSON {
     
-    double lat[] = {20.013601,  20.014282, 20.014316, 20.013951, 20.01434923};
-    double lng[] = {73.764862, 73.762663, 73.764120, 73.763843, 73.76441761};
-    String eid[] = {"e100", "e101", "e102", "e103", "e104"};
+//    double lat[] = {20.013601,  20.014282, 20.014316, 20.013951, 20.01434923};
+//    double lng[] = {73.764862, 73.762663, 73.764120, 73.763843, 73.76441761};
+//    String eid[] = {"e100", "e101", "e102", "e103", "e104"};
     
     
     // Pass DATABASE lat,lng,eid to instance variables
     
     public String createJSONemployees() throws IOException {
 
-        double[] latitude = lat;
-        double[] longitude = lng;
-        String[] empid = eid;
+        ArrayList<ArrayList> al=new ArrayList<>();
+        ArrayList tempList=new ArrayList();
+        
+        FetchEmployeeLocations fetchLoc=new FetchEmployeeLocations();
+        al=fetchLoc.returnLocations();
+        
+        
+        tempList=al.get(0);
+        Object eid[]=tempList.toArray();
+        
+        tempList=al.get(1);
+        Object lat[]=tempList.toArray();
+        
+        tempList=al.get(2);
+        Object lng[]=tempList.toArray();
+        
+        Object[] latitude = lat;
+        Object[] longitude = lng;
+        Object[] empid = eid;
 
         String jsonText = "";
 
