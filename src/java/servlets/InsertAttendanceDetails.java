@@ -65,8 +65,7 @@ public class InsertAttendanceDetails extends HttpServlet {
                 Calendar c=Calendar.getInstance(tz);
                 
                 String strTime=c.get(Calendar.HOUR_OF_DAY)+":"+c.get(Calendar.MINUTE)+":"+c.get(Calendar.SECOND);
-                String strDate=c.get(Calendar.DAY_OF_MONTH)+"/"+c.get(Calendar.MONTH)+"/"+c.get(Calendar.YEAR);
-                
+                String strDate=c.get(Calendar.DAY_OF_MONTH)+"/"+(c.get(Calendar.MONTH)+1)+"/"+c.get(Calendar.YEAR);
                 
                 con=DBConnection.getDBConnection();
                 String sql="insert into attendance_details (eid,date,intime,latitude,longitude) values (?,?,?,?,?)";

@@ -36,6 +36,10 @@
         <servlet-name>UpdateAttendance</servlet-name>
         <servlet-class>servlets.UpdateAttendance</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MarkingOutAttendance</servlet-name>
+        <servlet-class>servlets.MarkingOutAttendance</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletResponse2Client</servlet-name>
         <url-pattern>/ServletResponse2Client</url-pattern>
@@ -67,6 +71,10 @@
     <servlet-mapping>
         <servlet-name>UpdateAttendance</servlet-name>
         <url-pattern>/UpdateAttendance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MarkingOutAttendance</servlet-name>
+        <url-pattern>/MarkingOutAttendance</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

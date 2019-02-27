@@ -13,9 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,7 +27,7 @@ import org.json.simple.JSONObject;
  *
  * @author ANKIT
  */
-public class UpdateAttendance extends HttpServlet {
+public class MarkingOutAttendance extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,6 +38,7 @@ public class UpdateAttendance extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
     
     Connection con;
     Statement stmt;
@@ -55,6 +54,7 @@ public class UpdateAttendance extends HttpServlet {
             String eid=request.getParameter("eid");
             String latitude=request.getParameter("latitude");
             String longitude=request.getParameter("longitude");
+            String outStatus=request.getParameter("outstatus");
             String jsonResponse="";
             
             try{
@@ -67,16 +67,18 @@ public class UpdateAttendance extends HttpServlet {
                 
 
                 con=DBConnection.getDBConnection();
-                String sql="update attendance_details set latitude=?, longitude=?, lastupdate_time=? where eid=? and date=?";
+                String sql="update attendance_details set latitude=?, longitude=?, lastupdate_time=?, outtime=?, out_status=? where eid=? and date=?";
                 ps=con.prepareStatement(sql);
                 ps.setDouble(1, Double.parseDouble(latitude));
                 ps.setDouble(2, Double.parseDouble(longitude));
                 ps.setString(3, strTime);
-                ps.setString(4, eid);
-                ps.setString(5, strDate);
+                ps.setString(4, strTime);
+                ps.setInt(5, Integer.parseInt(outStatus));
+                ps.setString(6, eid);
+                ps.setString(7, strDate);
                 int i=ps.executeUpdate();
                 
-                jsonResponse=updateResponse(i);
+                jsonResponse=outResponse(i);
                 out.print(jsonResponse);
                 
                 
@@ -85,6 +87,7 @@ public class UpdateAttendance extends HttpServlet {
                 
                 out.print(ex);
             }
+            
         }
     }
 
@@ -127,7 +130,8 @@ public class UpdateAttendance extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    public String updateResponse(int responseStatus) throws IOException{
+    
+    public String outResponse(int responseStatus) throws IOException{
         String jsonText;
         
         JSONObject jo=new JSONObject();
