@@ -24,6 +24,18 @@
         <servlet-name>LocationResponse</servlet-name>
         <servlet-class>servlets.LocationResponse</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateAttendanceDetails</servlet-name>
+        <servlet-class>servlets.UpdateAttendanceDetails</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InsertAttendanceDetails</servlet-name>
+        <servlet-class>servlets.InsertAttendanceDetails</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateAttendance</servlet-name>
+        <servlet-class>servlets.UpdateAttendance</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletResponse2Client</servlet-name>
         <url-pattern>/ServletResponse2Client</url-pattern>
@@ -47,6 +59,14 @@
     <servlet-mapping>
         <servlet-name>LocationResponse</servlet-name>
         <url-pattern>/LocationResponse</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertAttendanceDetails</servlet-name>
+        <url-pattern>/InsertAttendanceDetails</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateAttendance</servlet-name>
+        <url-pattern>/UpdateAttendance</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
