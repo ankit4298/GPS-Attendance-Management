@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -49,11 +50,14 @@ public class ValidateLogin extends HttpServlet {
             String jsonResponse = "";
 
             if (validate == 1) {
-                jsonResponse = cj.loginResponse(username,1, 0);  //login success
+                
+                ArrayList al = getEmployeeDetails(username);
+
+                jsonResponse = cj.loginResponse(username, 1, 0, al);  //login success
             } else if (validate == -1) {
-                jsonResponse = cj.loginResponse(username,1, 1);  //login fails at client w/ double login msg
+                jsonResponse = cj.loginResponse(username, 1, 1);  //login fails at client w/ double login msg
             } else {
-                jsonResponse = cj.loginResponse(username,0, 0);  //login fails at client
+                jsonResponse = cj.loginResponse(username, 0, 0);  //login fails at client
             }
 
             out.print(jsonResponse);
@@ -122,18 +126,57 @@ public class ValidateLogin extends HttpServlet {
             }
 
             if (dbpass.equals(pass) && loginstatus == 0) {
-                return 1;
+                return 1;   // success
             } else if (dbpass.equals(pass) && loginstatus == 1) {
-                return -1;
+                return -1;  // double login
             } else {
-                return 0;
+                return 0;   // fails
             }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(ValidateLogin.class.getName()).log(Level.SEVERE, null, ex);
             return 0;
         }
 
+    }
+
+    public ArrayList getEmployeeDetails(String username) {
+
+        ArrayList al = new ArrayList();
+
+        try {
+
+            Connection con = null;
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+            //username and password from android
+
+            con = DBConnection.getDBConnection();
+            String sql = "select * from employee_details where eid=?";
+            ps = con.prepareStatement(sql);
+            ps.setString(1, username);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                al.add(rs.getString("eid"));
+                al.add(rs.getString("firstname"));
+                al.add(rs.getString("middlename"));
+                al.add(rs.getString("lastname"));
+                al.add(rs.getString("gender"));
+                al.add(rs.getString("email"));
+                al.add(rs.getString("Address"));
+            }
+
+            rs.close();
+            ps.close();
+            con.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ValidateLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return al;
     }
 
 }

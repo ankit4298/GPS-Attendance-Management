@@ -13,7 +13,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -64,15 +67,14 @@ public class MarkingOutAttendance extends HttpServlet {
                 
                 String strTime=c.get(Calendar.HOUR_OF_DAY)+":"+c.get(Calendar.MINUTE)+":"+c.get(Calendar.SECOND);
                 String strDate=c.get(Calendar.DAY_OF_MONTH)+"/"+(c.get(Calendar.MONTH)+1)+"/"+c.get(Calendar.YEAR);
-                
 
                 con=DBConnection.getDBConnection();
                 String sql="update attendance_details set latitude=?, longitude=?, lastupdate_time=?, outtime=?, out_status=? where eid=? and date=?";
                 ps=con.prepareStatement(sql);
                 ps.setDouble(1, Double.parseDouble(latitude));
                 ps.setDouble(2, Double.parseDouble(longitude));
-                ps.setString(3, strTime);
-                ps.setString(4, strTime);
+                ps.setString(3, strTime);   // last time
+                ps.setString(4, strTime);   // out time
                 ps.setInt(5, Integer.parseInt(outStatus));
                 ps.setString(6, eid);
                 ps.setString(7, strDate);

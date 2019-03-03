@@ -67,11 +67,12 @@ public class UpdateAttendance extends HttpServlet {
                 
 
                 con=DBConnection.getDBConnection();
-                String sql="update attendance_details set latitude=?, longitude=?, lastupdate_time=? where eid=? and date=?";
+                // duration_status * <Interval TIME>
+                String sql="update attendance_details set latitude=?, longitude=?, lastupdate_time=?, duration_status=duration_status+1, duration=duration_status*5 where eid=? and date=?";
                 ps=con.prepareStatement(sql);
                 ps.setDouble(1, Double.parseDouble(latitude));
                 ps.setDouble(2, Double.parseDouble(longitude));
-                ps.setString(3, strTime);
+                ps.setString(3, strTime);   // last time
                 ps.setString(4, eid);
                 ps.setString(5, strDate);
                 int i=ps.executeUpdate();
