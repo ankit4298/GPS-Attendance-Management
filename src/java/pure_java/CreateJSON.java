@@ -92,15 +92,15 @@ public class CreateJSON {
     public String loginResponse(String username, int verify, int loginstatus) throws IOException {
         String jsonText;
 
-        JSONObject mainJO=new JSONObject();
+        JSONObject mainJO = new JSONObject();
         JSONObject loginInfo = new JSONObject();
-        
+
         loginInfo.put("username", username);
         loginInfo.put("loginverified", verify);
         loginInfo.put("loginstatus", loginstatus);
 
-        mainJO.put("loginInfo",loginInfo);
-        
+        mainJO.put("loginInfo", loginInfo);
+
         StringWriter out = new StringWriter();
         mainJO.writeJSONString(out);
 
@@ -111,9 +111,9 @@ public class CreateJSON {
 
     public String loginResponse(String username, int verify, int loginstatus, ArrayList al) throws IOException {
         String jsonText;
-        
+
         // columns to fetch and stored in JSON from employee_details table needs to be entered here
-        String key[] = {"eid", "firstname", "middlename", "lastname", "gender", "email", "address"};
+        String key[] = {"eid", "firstname", "middlename", "lastname", "gender", "email", "address", "phno"};
         int keyc = 0;
 
         JSONObject mainJO = new JSONObject();
@@ -126,7 +126,8 @@ public class CreateJSON {
 
         for (Object x : al) {
             userInfo.put(key[keyc], x);
-            keyc++;        }
+            keyc++;
+        }
 
         mainJO.put("loginInfo", loginInfo);
         mainJO.put("userInfo", userInfo);

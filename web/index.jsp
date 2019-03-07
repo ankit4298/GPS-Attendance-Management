@@ -28,6 +28,9 @@
         <br/>
         <a href="employeeMap.jsp">Employee Map</a><br/>
         <a href="LoginRecordsLookup">Display all login credentials</a><br/>
+        <a href="EmployeeRecordsLookup">Display all Employee Info</a><br/>
+        <a href="AttendanceLookup">Display all Attendance Info</a><br/>
+        <a href="registration.jsp">Register Employee</a><br/>
         
         
     </body>

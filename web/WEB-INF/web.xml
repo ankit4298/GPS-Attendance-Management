@@ -40,6 +40,18 @@
         <servlet-name>MarkingOutAttendance</servlet-name>
         <servlet-class>servlets.MarkingOutAttendance</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegisterPortal</servlet-name>
+        <servlet-class>servlets.RegisterPortal</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EmployeeRecordsLookup</servlet-name>
+        <servlet-class>servlets.EmployeeRecordsLookup</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AttendanceLookup</servlet-name>
+        <servlet-class>servlets.AttendanceLookup</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletResponse2Client</servlet-name>
         <url-pattern>/ServletResponse2Client</url-pattern>
@@ -75,6 +87,18 @@
     <servlet-mapping>
         <servlet-name>MarkingOutAttendance</servlet-name>
         <url-pattern>/MarkingOutAttendance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterPortal</servlet-name>
+        <url-pattern>/RegisterPortal</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmployeeRecordsLookup</servlet-name>
+        <url-pattern>/EmployeeRecordsLookup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AttendanceLookup</servlet-name>
+        <url-pattern>/AttendanceLookup</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -39,6 +39,8 @@ public class FetchEmployeeLocations {
         
         try {
             stmt=con.createStatement();
+            
+            // TODO : add Date clause
             String sql="select eid,latitude,longitude from attendance_details";
             rs=stmt.executeQuery(sql);
             

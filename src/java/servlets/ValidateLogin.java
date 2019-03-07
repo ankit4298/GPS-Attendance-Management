@@ -166,6 +166,7 @@ public class ValidateLogin extends HttpServlet {
                 al.add(rs.getString("gender"));
                 al.add(rs.getString("email"));
                 al.add(rs.getString("Address"));
+                al.add(rs.getString("phno"));
             }
 
             rs.close();
