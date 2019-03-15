@@ -1,3 +1,7 @@
+body{
+    background-color: #E6E6FA;
+}
+
 
 /* floats right */
 input[type=button],
@@ -40,3 +44,10 @@ input[type=text],select{
     width: 64px;
     height: 64px;
 }
+
+.subheader {
+    color: #1C6EA4;
+    font-size: 25px;
+}
+
+

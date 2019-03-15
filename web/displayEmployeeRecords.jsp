@@ -14,7 +14,7 @@
         <title>Employee Records</title>
         <link rel="stylesheet" type="text/css" href="css/table.css">
         <link rel="stylesheet" type="text/css" href="css/theme.css">
-        
+
         <script type="text/javascript" src="js/filter-table.js"></script>
 
         <style>
@@ -26,15 +26,10 @@
     </head>
     <body>
 
-<table style="width: 100%">
-    <tr>
-        <td><a title="homepage" id="title-back" href="index.jsp"></a></td>
-        <td><h1 id="title-header">Employee Details</h1></td>
-        <td></td>
-    </tr>
-</table>
-        
-        <hr>
+        <div class="subheader">
+            <hr/>
+            Employee Records
+        </div>
         <br/>
 
         <form align="right">

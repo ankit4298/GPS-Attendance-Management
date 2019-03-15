@@ -11,26 +11,22 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="icon" type="image/png" href="images/website_icon.png">
-        
+
         <title>Login Records</title>
         <link rel="stylesheet" type="text/css" href="css/table.css">
         <link rel="stylesheet" type="text/css" href="css/theme.css">
-        
+
         <script type="text/javascript" src="js/filter-table.js"></script>
-        
+
     </head>
     <body>
 
-        <table style="width: 100%">
-            <tr>
-                <td><a title="homepage" id="title-back" href="index.jsp"></a></td>
-                <td><h1 id="title-header">Login Credentials</h1></td>
-                <td></td>
-            </tr>
-        </table>
-        <hr/>
+        <div class="subheader">
+            <hr/>
+            Login Records
+        </div>
         <br/>
-        
+
         <form align="right">
             <label>Search: </label>
             <input type="text" id="filterByEID" onkeyup="filterTable()" onClick="this.setSelectionRange(0, this.value.length)" placeholder="Seacrh Records"/>

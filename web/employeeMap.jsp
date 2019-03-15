@@ -11,7 +11,7 @@
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBF_xtsW0UFyRCZJ64lz19mm0RbJL8805w&libraries=geometry"></script>
         <style>
             #map {
-                width: 1000px;
+                width: 100%;
                 height: 600px;
             }
         </style>
@@ -19,14 +19,10 @@
     <body>
 
 
-        <table style="width: 100%">
-            <tr>
-                <td><a title="homepage" id="title-back" href="index.jsp"></a></td>
-                <td><h1 id="title-header">Live Employee Map</h1></td>
-                <td></td>
-            </tr>
-        </table>
-        <hr/>
+        <div class="subheader">
+            <hr/>
+            Employee Live Map
+        </div>
         <br/>
 
         <%

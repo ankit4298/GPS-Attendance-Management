@@ -17,14 +17,10 @@
     </head>
     <body>
         
-        <table style="width: 100%">
-            <tr>
-                <td><a title="homepage" id="title-back" href="index.jsp"></a></td>
-                <td><h1 id="title-header">Registration</h1></td>
-                <td></td>
-            </tr>
-        </table>
-        <hr/>
+        <div class="subheader">
+            <hr/>
+            Regestration of Employees
+        </div>
         <br/>
 
         <div class="form-style-5">
