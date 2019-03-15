@@ -10,13 +10,34 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="icon" type="image/png" href="images/website_icon.png">
+        
         <title>Login Records</title>
         <link rel="stylesheet" type="text/css" href="css/table.css">
+        <link rel="stylesheet" type="text/css" href="css/theme.css">
+        
+        <script type="text/javascript" src="js/filter-table.js"></script>
+        
     </head>
     <body>
 
-        <h2 align="center">Login Credentails</h2>
-        <hr>
+        <table style="width: 100%">
+            <tr>
+                <td><a title="homepage" id="title-back" href="index.jsp"></a></td>
+                <td><h1 id="title-header">Login Credentials</h1></td>
+                <td></td>
+            </tr>
+        </table>
+        <hr/>
+        <br/>
+        
+        <form align="right">
+            <label>Search: </label>
+            <input type="text" id="filterByEID" onkeyup="filterTable()" onClick="this.setSelectionRange(0, this.value.length)" placeholder="Seacrh Records"/>
+            <select id="filterchoiceLocal" name="filterChoiceLocal" style="display: none">
+                <option value="1">Employee ID</option>
+            </select>
+        </form>
         <br/>
 
         <c:choose>
@@ -25,7 +46,7 @@
             </c:when>
             <c:otherwise>
 
-                <table class="blueTable">
+                <table id="tblData" class="blueTable">
                     <thead>
                         <tr>
                             <th>username</th>

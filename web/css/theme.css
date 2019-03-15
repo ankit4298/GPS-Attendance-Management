@@ -1,0 +1,42 @@
+
+/* floats right */
+input[type=button],
+input[type=submit],
+button{
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    float:right;
+    margin-right: 0px;
+    background: rgb(66, 184, 221); /* this is a light blue */
+    font-size: 90%;
+    padding: 5px;
+    outline:none;
+}
+
+a{
+    color:#0645AD ;
+    cursor: pointer;
+    float: right;
+}
+
+input[type=text],select{
+    border-radius: 8px;
+    padding: 5px;
+    outline:none;
+}
+
+#title-header{
+    margin-left: 25%;
+}
+
+#title-back{
+    margin-left: 10px;
+    float:left;
+    background: url(../images/homepage_ico.jpg) center no-repeat;
+    text-indent: -9999px;
+    display: block;
+    width: 64px;
+    height: 64px;
+}

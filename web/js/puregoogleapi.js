@@ -33,10 +33,12 @@ function coordinateObj(lat, lng) {
 // polygon/area bounds
 var mapPolygon = new google.maps.Polygon({
     paths: [
-        new google.maps.LatLng(20.013635, 73.764568),
-        new google.maps.LatLng(20.013716, 73.762858),
-        new google.maps.LatLng(20.014366, 73.763212),
-        new google.maps.LatLng(20.014366, 73.764730)
+        new google.maps.LatLng(20.013637, 73.764554),
+        new google.maps.LatLng(20.013684, 73.763493),
+        new google.maps.LatLng(20.015367, 73.763616),
+        new google.maps.LatLng(20.015311, 73.764276),
+        new google.maps.LatLng(20.014469, 73.764178),
+        new google.maps.LatLng(20.014343, 73.764696)
     ],
 
     strokeColor: '#000000',
@@ -47,14 +49,25 @@ var mapPolygon = new google.maps.Polygon({
 });
 
 
+var mapView=google.maps.MapTypeId.ROADMAP;
 // Init map
 function initialize() {
+    
+    var dropDownBox=document.getElementById("viewChoice");
+    var viewChoice=dropDownBox.options[dropDownBox.selectedIndex].value;
+    if(viewChoice==1){
+        mapView=google.maps.MapTypeId.ROADMAP;
+    }else{
+        mapView=google.maps.MapTypeId.SATELLITE;
+    }
+    
+    
     var map = new google.maps.Map(
             document.getElementById("map"), {
-        center: new google.maps.LatLng(20.014365, 73.764730),
-        zoom: 19,
+        center: new google.maps.LatLng(20.014570, 73.764073),
+        zoom: 18.5,
 //        draggable:false,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        mapTypeId: mapView
     });
 
 // create polygon for the given bounds

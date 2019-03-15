@@ -9,15 +9,23 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="icon" type="image/png" href="images/website_icon.png">
         <title>Registration</title>
+        
         <link rel="stylesheet" type="text/css" href="css/registerForm.css">
+        <link rel="stylesheet" type="text/css" href="css/theme.css">
     </head>
     <body>
         
-        <br/>
-        <center class="title">Registration</center>
-        <br/>
+        <table style="width: 100%">
+            <tr>
+                <td><a title="homepage" id="title-back" href="index.jsp"></a></td>
+                <td><h1 id="title-header">Registration</h1></td>
+                <td></td>
+            </tr>
+        </table>
         <hr/>
+        <br/>
 
         <div class="form-style-5">
             <form action="RegisterPortal">

@@ -41,21 +41,24 @@ public class AttendanceLookup extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        // ---- used for Advance Filter
         String filterBox = request.getParameter("filterBox");
         String filterChoice = request.getParameter("filterChoice");
-
-        System.out.println(filterBox + " " + filterChoice);
-
+        // ----
+        
         Connection con = null;
         Statement stmt = null;
         ResultSet rs = null;
         String sql=null;
 
+        
         if (filterBox == null) {
             sql = "select * from attendance_details";
         } else if(filterChoice.equals("1")){    // eid
+            filterBox=filterBox.trim();
             sql = "select * from attendance_details where eid='"+filterBox+"'";
         } else if(filterChoice.equals("2")){    // date
+            filterBox=filterBox.trim();
             sql = "select * from attendance_details where date='"+filterBox+"'";
         }
 
