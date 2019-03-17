@@ -103,3 +103,8 @@
 .title{
     font-size: 25px;
 }
+
+.failed-attempt{
+    text-align: center;
+    color: red;
+}

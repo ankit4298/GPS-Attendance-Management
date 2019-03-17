@@ -44,16 +44,19 @@ public class FetchEmployeeLocations {
             TimeZone tz = TimeZone.getTimeZone("GMT+5:30");
             Calendar c = Calendar.getInstance(tz);
             String strDate = c.get(Calendar.DAY_OF_MONTH) + "/" + (c.get(Calendar.MONTH) + 1) + "/" + c.get(Calendar.YEAR);
-
+            
             // TODO : add Date clause
-            String sql = "select eid,latitude,longitude from attendance_details where date=" + strDate;
+            String sql = "select eid,latitude,longitude from attendance_details where date='" +strDate+"'";
             rs = stmt.executeQuery(sql);
 
+            
             while (rs.next()) {
                 String db_eid = rs.getString("eid");
                 double db_lat = rs.getDouble("latitude");
                 double db_lng = rs.getDouble("longitude");
 
+                System.out.print(db_eid+" "+db_lat+" "+db_lng);
+                
                 eid.add(db_eid);
                 lat.add(db_lat);
                 lng.add(db_lng);

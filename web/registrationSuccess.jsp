@@ -5,12 +5,20 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%
+    if (session.getAttribute("eid") == null) {
+        out.print("** NOT AUTHORIZED **");
+        return;
+    }
+%>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="icon" type="image/png" href="images/website_icon.png">
-        <meta http-equiv="Refresh" content="5;url=index.jsp">
+        <!--<meta http-equiv="Refresh" content="5;url=index.jsp">-->
 
         <title>Registration Success</title>
         <style>
@@ -29,14 +37,14 @@
         %>
 
         <h2>Successfully Registered user <% out.print(request.getAttribute("eid"));%></h2>
-        <h4>Redirecting to Homepage, if not redirected automatically <a href="index.jsp">click here</a> . . .</h4>
+        <!--<h4>Redirecting to Homepage, if not redirected automatically <a href="index.jsp">click here</a> . . .</h4>-->
 
         <%
             } else{
         %>
         
         <h2>User Already Registered</h2>
-        <h4>Redirecting to Homepage, if not redirected automatically <a href="index.jsp">click here</a> . . .</h4>
+        <!--<h4>Redirecting to Homepage, if not redirected automatically <a href="index.jsp">click here</a> . . .</h4>-->
         
         <%
             }

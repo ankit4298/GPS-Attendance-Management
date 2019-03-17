@@ -5,6 +5,14 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%
+    if (session.getAttribute("eid") == null) {
+        out.print("** NOT AUTHORIZED **");
+        return;
+    }
+%>
+
 <!DOCTYPE html>
 <html>
     <head>

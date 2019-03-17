@@ -101,9 +101,9 @@ function checkInPolygon(marker, polygon, empid) {
     var infowindow = new google.maps.InfoWindow();
     var html = "";
     if (google.maps.geometry.poly.containsLocation(marker.getPosition(), polygon)) {
-        html = "<font color=\"green\"><b>" + empid + "</b></font>";
+        html = "<a href=\"profile.jsp?eid="+empid+"\"><font color=\"green\"><b>"+empid+"</b></font></a>";
     } else {
-        html = "<font color=\"red\"><b>" + empid + "</b></font>";
+        html = "<a href=\"profile.jsp?eid="+empid+"\"><font color=\"red\"><b>"+empid+"</b></font></a>";
 
 //        //directly redirect to employees profile
 //        html = "<a href=" +empid+".jsp >"+empid+"</a>";

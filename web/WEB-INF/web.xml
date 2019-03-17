@@ -52,6 +52,10 @@
         <servlet-name>AttendanceLookup</servlet-name>
         <servlet-class>servlets.AttendanceLookup</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginWebsite</servlet-name>
+        <servlet-class>servlets.LoginWebsite</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletResponse2Client</servlet-name>
         <url-pattern>/ServletResponse2Client</url-pattern>
@@ -100,12 +104,16 @@
         <servlet-name>AttendanceLookup</servlet-name>
         <url-pattern>/AttendanceLookup</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginWebsite</servlet-name>
+        <url-pattern>/LoginWebsite</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-    <!--    <welcome-file-list>
-        <welcome-file>employeeMap.jsp</welcome-file>
-    </welcome-file-list>-->
+    <welcome-file-list>
+        <welcome-file>LoginPortal.jsp</welcome-file>
+    </welcome-file-list>
 </web-app>

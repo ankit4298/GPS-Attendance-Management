@@ -43,7 +43,7 @@ body {
 /* Style the header */
 .header {
     background-color: #E6E6FA;
-    padding: 1px;
+    /*padding: 1px;*/
     text-align: center;
     color: #1C6EA4;
 }

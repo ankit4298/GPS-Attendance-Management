@@ -6,6 +6,14 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%
+    if (session.getAttribute("eid") == null) {
+        out.print("** NOT AUTHORIZED **");
+        return;
+    }
+%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -38,7 +46,7 @@
             <input type="text" id="filterByEID" onkeyup="filterTable()" onClick="this.setSelectionRange(0, this.value.length)" placeholder="Seacrh Records" />
             <select id="filterchoiceLocal" name="filterChoiceLocal" required>
                 <option value="1">Employee ID</option>
-                <option value="2">First Name</option>
+                <option value="2" selected="">First Name</option>
                 <option value="3">Last Name</option>
                 <option value="4">Work Department</option>
             </select>
@@ -75,7 +83,8 @@
                     <tbody>
                         <c:forEach var="info" items="${empInfo}">
                             <tr>
-                                <td>${info.eid}</td>
+                                <!--<td>${info.eid}</td>-->
+                                <td> <a href="profile.jsp?eid=${info.eid}">       ${info.eid}</a></td>
                                 <td>${info.firstname}</td>
                                 <td>${info.middlename}</td>
                                 <td>${info.lastname}</td>

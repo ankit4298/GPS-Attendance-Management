@@ -1,5 +1,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="pure_java.CreateJSON" %>
+
+<%
+    if (session.getAttribute("eid") == null) {
+        out.print("** NOT AUTHORIZED **");
+        return;
+    }
+%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -41,7 +49,9 @@
 
         <div id="map">.</div>
         <div id="resultDIV"></div>
-        <script type="text/javascript" src="js/puregoogleapi.js"></script>
+        
+        <!--    '?1' is for revision no. to update web browser with latest version of script    -->
+        <script type="text/javascript" src="js/puregoogleapi.js?1"></script>
 
 
 
