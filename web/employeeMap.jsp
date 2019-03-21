@@ -12,7 +12,6 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="icon" type="image/png" href="images/website_icon.png">
         <link rel="stylesheet" type="text/css" href="css/theme.css">
 
         <title>MAP</title>

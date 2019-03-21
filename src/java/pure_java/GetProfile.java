@@ -27,7 +27,7 @@ public class GetProfile {
         try {
             con = DBConnection.getDBConnection();
             stmt = con.createStatement();
-            String sql = "select * from employee_details";
+            String sql = "select * from employee_details where eid='"+eid+"'";
             rs = stmt.executeQuery(sql);
 
             while (rs.next()) {

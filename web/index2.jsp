@@ -18,10 +18,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="icon" type="image/png" href="images/website_icon.png">
-        <title>Homepage</title>
+        <title>OAMS</title>
     </head>
 
-    <frameset rows = "12%,*" frameborder="0" noresize>
+    <frameset rows = "10%,*" frameborder="0" noresize>
         <frame src = "header-window.html">
             <frameset cols = "16%,*">
                 <frame src = "navigation.html">

@@ -1,12 +1,9 @@
 var resultDIV = document.getElementById("resultDIV");
-
 var infoString = document.getElementById("infoJSON").value;
 var infoJSON = JSON.parse(infoString);
 
 var empID = [];
-
 var map;
-
 
 for (var x in infoJSON) {
     empID.push(x);

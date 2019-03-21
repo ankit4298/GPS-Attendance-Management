@@ -6,6 +6,7 @@
 package pure_java;
 
 import database.FetchEmployeeLocations;
+import database.FetchRemoteEmployeeLocation;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.ArrayList;
@@ -20,13 +21,8 @@ import org.json.simple.JSONObject;
  */
 public class CreateJSON {
 
-//    double lat[] = {20.013601,  20.014282, 20.014316, 20.013951, 20.01434923};
-//    double lng[] = {73.764862, 73.762663, 73.764120, 73.763843, 73.76441761};
-//    String eid[] = {"e100", "e101", "e102", "e103", "e104"};
-    // Pass DATABASE lat,lng,eid to instance variables
     public String createJSONemployees() throws IOException {
 
-        // TODO : enhance the getting system
         ArrayList<ArrayList> al = new ArrayList<>();
         ArrayList tempList = new ArrayList();
 
@@ -67,23 +63,110 @@ public class CreateJSON {
         return jsonText;
     }
 
-    public String createJSONresponse(String name) throws IOException {
-        String jsonText;
+    public String createJSONremoteEmployees() throws IOException {
+
+        ArrayList<ArrayList> al = new ArrayList<>();
+        ArrayList tempList = new ArrayList();
+
+        FetchRemoteEmployeeLocation fetchRemote = new FetchRemoteEmployeeLocation();
+        al = fetchRemote.returnLocations();
+
+        tempList = al.get(0);
+        Object eid[] = tempList.toArray();
+
+        tempList = al.get(1);
+        Object lat[] = tempList.toArray();
+
+        tempList = al.get(2);
+        Object lng[] = tempList.toArray();
+
+        tempList = al.get(3);
+        Object locID[] = tempList.toArray();
+
+        Object[] latitude = lat;
+        Object[] longitude = lng;
+        Object[] empid = eid;
+        Object[] locationID = locID;
+
+        String jsonText = "";
+
         JSONObject jo = new JSONObject();
-        jo.put("name", name);
-        jo.put("ID", 400);
+        for (int i = 0; i < eid.length; i++) {
 
-        //for address storing
-        Map m = new LinkedHashMap(3);
-        m.put("country", "INDIA");
-        m.put("state", "Maharashtra");
-        m.put("city", "Nashik");
+            JSONArray ja = new JSONArray();
+            Map m = new LinkedHashMap(2);
+            m.put("lat", latitude[i]);
+            m.put("lng", longitude[i]);
+            m.put("locID", locationID[i]);
+            ja.add(m);  // put lat long in array of emp id
+            jo.put(empid[i], ja); // put empid in json obj
 
-        jo.put("address", m);
+        }
 
         StringWriter out = new StringWriter();
         jo.writeJSONString(out);
+        jsonText = out.toString();
 
+        return jsonText;
+    }
+
+    public String createJSONremoteCoords() throws IOException {
+
+        ArrayList<ArrayList> al = new ArrayList<>();
+        ArrayList tempList = new ArrayList();
+
+        FetchRemoteEmployeeLocation fetchRemote = new FetchRemoteEmployeeLocation();
+        al = fetchRemote.getCircleBounds();
+
+        tempList = al.get(0);
+        Object locID[] = tempList.toArray();
+
+        tempList = al.get(1);
+        Object siteName[] = tempList.toArray();
+
+        tempList = al.get(2);
+        Object lat[] = tempList.toArray();
+
+        tempList = al.get(3);
+        Object lng[] = tempList.toArray();
+
+        tempList = al.get(4);
+        Object rad[] = tempList.toArray();
+
+        Object[] locationID = locID;
+        Object[] site_name = siteName;
+        Object[] latitude = lat;
+        Object[] longitude = lng;
+        Object[] radius = rad;
+
+        String jsonText = "";
+
+//        int ctr = 0;
+        JSONObject mainJO = new JSONObject();
+        for (int i = 0; i < locationID.length; i++) {
+
+            JSONArray innerJA = new JSONArray();
+            Map m = new LinkedHashMap(3);
+//            m.put("locationID", locationID[i]);
+            m.put("site_name", site_name[i]);
+            m.put("latitude", latitude[i]);
+            m.put("longitude", longitude[i]);
+            m.put("radius", radius[i]);
+            innerJA.add(m);
+            mainJO.put(locationID[i], innerJA);
+//            ctr++;
+
+//            JSONArray ja = new JSONArray();
+//            Map m = new LinkedHashMap(2);
+//            m.put("lat", latitude[i]);
+//            m.put("lng", longitude[i]);
+//            m.put("radius", radius[i]);
+//            ja.add(m);  // put lat long in array of emp id
+//            jo.put(locationID[i], ja); // put empid in json obj
+        }
+
+        StringWriter out = new StringWriter();
+        mainJO.writeJSONString(out);
         jsonText = out.toString();
 
         return jsonText;
