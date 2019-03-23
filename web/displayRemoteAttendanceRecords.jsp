@@ -53,7 +53,7 @@
 
     <div class="subheader">
         <hr/>
-        Attendance Records
+        Remote Attendance Records
     </div>
     <br/>
 
@@ -71,7 +71,7 @@
 
         <script type="text/javascript" src="js/reportDownload.js"></script>
 
-        <form action="AttendanceLookup">
+        <form action="RemoteAttendanceLookup">
             <input type="submit" value="Display All Records"/>
         </form>
 
@@ -81,7 +81,7 @@
         <br/>
 
         <div id="advanceFilters">
-            <form action="AttendanceLookup" align="right">
+            <form action="RemoteAttendanceLookup" align="right">
                 <fieldset>
                     <legend>Advance Filters</legend>
 

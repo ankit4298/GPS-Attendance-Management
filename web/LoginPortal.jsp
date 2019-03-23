@@ -47,6 +47,8 @@
                             }
                             if (failedAttempt == 1) {
                                 out.println("Incorrect ID or Password, Try Again . . .");
+                            } else if(failedAttempt == 2){
+                                out.println("Login avaliable with Administrator ID only !");
                             }
                         %>
                     </div><br/>

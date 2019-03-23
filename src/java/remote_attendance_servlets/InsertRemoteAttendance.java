@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlets;
+package remote_attendance_servlets;
 
 import database.DBConnection;
 import java.io.IOException;
@@ -11,11 +11,10 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,23 +23,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONObject;
+import servlets.InsertAttendanceDetails;
 
 /**
  *
  * @author ANKIT
  */
-public class UpdateAttendance extends HttpServlet {
-    
+public class InsertRemoteAttendance extends HttpServlet {
+
     Connection con;
     Statement stmt;
     PreparedStatement ps;
-    
+    ResultSet rs;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             
             String eid=request.getParameter("eid");
             String latitude=request.getParameter("latitude");
@@ -48,34 +47,32 @@ public class UpdateAttendance extends HttpServlet {
             String jsonResponse="";
             
             try{
-                // insert time and date from server
+                
+                // insert date from server
                 TimeZone tz=TimeZone.getTimeZone("GMT+5:30");
                 Calendar c=Calendar.getInstance(tz);
                 
                 String strTime=c.get(Calendar.HOUR_OF_DAY)+":"+c.get(Calendar.MINUTE)+":"+c.get(Calendar.SECOND);
                 String strDate=c.get(Calendar.DAY_OF_MONTH)+"/"+(c.get(Calendar.MONTH)+1)+"/"+c.get(Calendar.YEAR);
                 
-
                 con=DBConnection.getDBConnection();
-                // duration_status * <Interval TIME>
-                String sql="update attendance_details set latitude=?, longitude=?, lastupdate_time=?, duration_status=duration_status+1, duration=duration_status*5 where eid=? and date=?";
+                String sql="insert into remote_details (eid,date,intime,latitude,longitude) values (?,?,?,?,?)";
                 ps=con.prepareStatement(sql);
-                ps.setDouble(1, Double.parseDouble(latitude));
-                ps.setDouble(2, Double.parseDouble(longitude));
-                ps.setString(3, strTime);   // last time
-                ps.setString(4, eid);
-                ps.setString(5, strDate);
-                int i=ps.executeUpdate();
+                ps.setString(1,eid);
+                ps.setString(2,strDate);
+                ps.setString(3,strTime);
+                ps.setDouble(4,Double.parseDouble(latitude));
+                ps.setDouble(5,Double.parseDouble(longitude));
+                int i = ps.executeUpdate();
                 
-                jsonResponse=updateResponse(i);
+                jsonResponse=insertResponse(i);
+                
                 out.print(jsonResponse);
                 
-                
             } catch (SQLException ex) {
-                Logger.getLogger(UpdateAttendance.class.getName()).log(Level.SEVERE, null, ex);
-                
-                out.print(ex);
+                Logger.getLogger(InsertAttendanceDetails.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
         }
     }
 
@@ -118,7 +115,7 @@ public class UpdateAttendance extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    public String updateResponse(int responseStatus) throws IOException{
+    public String insertResponse(int responseStatus) throws IOException{
         String jsonText;
         
         JSONObject jo=new JSONObject();

@@ -56,6 +56,26 @@
         <servlet-name>GetRemoteSites</servlet-name>
         <servlet-class>servlets.GetRemoteSites</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddRemoteSite</servlet-name>
+        <servlet-class>remote_attendance_servlets.AddRemoteSite</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InsertRemoteAttendance</servlet-name>
+        <servlet-class>remote_attendance_servlets.InsertRemoteAttendance</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateRemoteAttendance</servlet-name>
+        <servlet-class>remote_attendance_servlets.UpdateRemoteAttendance</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MarkOutRemoteAttendance</servlet-name>
+        <servlet-class>remote_attendance_servlets.MarkOutRemoteAttendance</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RemoteAttendanceLookup</servlet-name>
+        <servlet-class>remote_attendance_servlets.RemoteAttendanceLookup</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DBHandling</servlet-name>
         <url-pattern>/DBHandling</url-pattern>
@@ -107,6 +127,26 @@
     <servlet-mapping>
         <servlet-name>GetRemoteSites</servlet-name>
         <url-pattern>/GetRemoteSites</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddRemoteSite</servlet-name>
+        <url-pattern>/AddRemoteSite</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertRemoteAttendance</servlet-name>
+        <url-pattern>/InsertRemoteAttendance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateRemoteAttendance</servlet-name>
+        <url-pattern>/UpdateRemoteAttendance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MarkOutRemoteAttendance</servlet-name>
+        <url-pattern>/MarkOutRemoteAttendance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RemoteAttendanceLookup</servlet-name>
+        <url-pattern>/RemoteAttendanceLookup</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

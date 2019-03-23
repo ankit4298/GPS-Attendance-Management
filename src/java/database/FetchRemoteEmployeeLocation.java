@@ -37,7 +37,7 @@ public class FetchRemoteEmployeeLocation {
             Calendar c = Calendar.getInstance(tz);
             String strDate = c.get(Calendar.DAY_OF_MONTH) + "/" + (c.get(Calendar.MONTH) + 1) + "/" + c.get(Calendar.YEAR);
 
-            String sql = "select eid,latitude,longitude,locationID from remote_details where date='" + strDate + "'";
+            String sql = "select eid,latitude,longitude,locationID from remote_details where date='" + strDate + "' and outtime=-1";
             rs = stmt.executeQuery(sql);
 
             while (rs.next()) {

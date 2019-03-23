@@ -12,7 +12,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -28,36 +27,42 @@ import javax.servlet.http.HttpSession;
  */
 public class LoginWebsite extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    int checkFlag = 0;
+    int validate=0;
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            String eid = request.getParameter("eid");
+            String eid = request.getParameter("eid").toLowerCase();
             String pass = request.getParameter("password");
 
-            int validate = checkLogin(eid, pass);
+            if (!eid.contains("e")) {
+                checkFlag = 1;
+            }else{
+                validate=2;
+            }
 
+            if (checkFlag == 1) {
+                validate = checkLogin(eid, pass);
+            }
+            
             if (validate == 1) { // success
                 HttpSession session = request.getSession();
                 session.setAttribute("eid", eid);
-                
+
                 RequestDispatcher disp = request.getRequestDispatcher("/index2.jsp");
                 disp.forward(request, response);
-            } else { // fails
+            } else if(validate == 0) { // fails
                 request.setAttribute("failedAttempt", "1");
                 RequestDispatcher disp = request.getRequestDispatcher("/LoginPortal.jsp");
                 disp.forward(request, response);
-                
+
+            } else if(validate == 2){
+                request.setAttribute("failedAttempt", "2");
+                RequestDispatcher disp = request.getRequestDispatcher("/LoginPortal.jsp");
+                disp.forward(request, response);
             }
 
         }

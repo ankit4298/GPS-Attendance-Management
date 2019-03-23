@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlets;
+package remote_attendance_servlets;
 
 import database.DBConnection;
 import java.io.IOException;
@@ -13,9 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,23 +22,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONObject;
+import servlets.UpdateAttendance;
 
 /**
  *
  * @author ANKIT
  */
-public class UpdateAttendance extends HttpServlet {
-    
+public class UpdateRemoteAttendance extends HttpServlet {
+
     Connection con;
     Statement stmt;
     PreparedStatement ps;
-    
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             
             String eid=request.getParameter("eid");
             String latitude=request.getParameter("latitude");
@@ -58,11 +55,11 @@ public class UpdateAttendance extends HttpServlet {
 
                 con=DBConnection.getDBConnection();
                 // duration_status * <Interval TIME>
-                String sql="update attendance_details set latitude=?, longitude=?, lastupdate_time=?, duration_status=duration_status+1, duration=duration_status*5 where eid=? and date=?";
+                String sql="update remote_details set latitude=?, longitude=?, lastupdate_time=?, duration_status=duration_status+1, duration=duration_status*5 where eid=? and date=?";
                 ps=con.prepareStatement(sql);
                 ps.setDouble(1, Double.parseDouble(latitude));
                 ps.setDouble(2, Double.parseDouble(longitude));
-                ps.setString(3, strTime);   // last time
+                ps.setString(3, strTime);   // last update time
                 ps.setString(4, eid);
                 ps.setString(5, strDate);
                 int i=ps.executeUpdate();
@@ -76,6 +73,7 @@ public class UpdateAttendance extends HttpServlet {
                 
                 out.print(ex);
             }
+            
         }
     }
 

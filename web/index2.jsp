@@ -24,7 +24,7 @@
     <frameset rows = "10%,*" frameborder="0" noresize>
         <frame src = "header-window.html">
             <frameset cols = "16%,*">
-                <frame src = "navigation.html">
+                <frame src = "navigation.html" >
                 <frame src = "mainwindow.html" name = "contentwindow">
                         
                     </frame>
